@@ -305,14 +305,7 @@ def predict():
             "or other incorrect Python syntax."
         )
 
-        corrected_code = (
-            "# Example of valid Python syntax:\n"
-            "condition = True\n"
-            "\n"
-            "if condition:\n"
-            "    print('Correct indentation and syntax')"
-        )
-
+        corrected_code = " "
     ml_result = "Buggy" if prediction == 1 else "Not Buggy"
 
     if rule_based_bug:
