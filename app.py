@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import joblib
 import pandas as pd
 
-from feature_extractor import extract_features
+from feature_extractor import extract_features, find_undefined_variables
 
 
 app = Flask(__name__)
@@ -14,6 +14,11 @@ model = joblib.load("trained_model.pkl")
 @app.route("/")
 def home():
     return render_template("index.html")
+
+
+@app.route("/comparison")
+def comparison():
+    return render_template("comparison.html")
 
 
 @app.route("/predict", methods=["GET", "POST"])
@@ -305,7 +310,33 @@ def predict():
             "or other incorrect Python syntax."
         )
 
-        corrected_code = " "
+        corrected_code = ""
+
+    # AST-based runtime error detection: undefined variables (NameError)
+    if not rule_based_bug:
+        undefined_vars = find_undefined_variables(code)
+
+        if undefined_vars:
+            rule_based_bug = True
+
+            bug_reason = (
+                "Possible undefined variable detected: "
+                + ", ".join(undefined_vars)
+                + "."
+            )
+
+            bug_impact = (
+                "Using a variable that was never defined causes a "
+                "NameError at runtime, stopping the program."
+            )
+
+            bug_fix = (
+                "Define the variable before using it, or check for a "
+                "spelling mistake in the variable name."
+            )
+
+            corrected_code = ""
+
     ml_result = "Buggy" if prediction == 1 else "Not Buggy"
 
     if rule_based_bug:
@@ -480,11 +511,11 @@ def predict():
         bug_impact=bug_impact,
         bug_fix=bug_fix,
         corrected_code=corrected_code,
+        detection_method=detection_method,
         suggestions=suggestions,
         code=code,
         filename=filename,
-        features=features,
-        detection_method=detection_method
+        features=features
     )
 
 
