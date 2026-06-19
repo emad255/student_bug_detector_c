@@ -311,9 +311,11 @@ def predict():
     if rule_based_bug:
         result = "Buggy"
         confidence = max(confidence, 85)
+        detection_method = "Rule-Based Detection"
 
     else:
         result = ml_result
+        detection_method = "Machine Learning Model"
 
         if result == "Not Buggy":
             bug_reason = (
@@ -481,7 +483,8 @@ def predict():
         suggestions=suggestions,
         code=code,
         filename=filename,
-        features=features
+        features=features,
+        detection_method=detection_method
     )
 
 
