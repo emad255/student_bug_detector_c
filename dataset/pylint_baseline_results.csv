@@ -1,0 +1,41 @@
+filename,actual_label,pylint_prediction,correct
+buggy_1.py,Buggy,Buggy,True
+buggy_10.py,Buggy,Buggy,True
+buggy_11.py,Buggy,Buggy,True
+buggy_12.py,Buggy,Buggy,True
+buggy_13.py,Buggy,Buggy,True
+buggy_14.py,Buggy,Buggy,True
+buggy_15.py,Buggy,Buggy,True
+buggy_16.py,Buggy,Buggy,True
+buggy_17.py,Buggy,Buggy,True
+buggy_18.py,Buggy,Buggy,True
+buggy_19.py,Buggy,Buggy,True
+buggy_2.py,Buggy,Buggy,True
+buggy_20.py,Buggy,Buggy,True
+buggy_3.py,Buggy,Buggy,True
+buggy_4.py,Buggy,Buggy,True
+buggy_5.py,Buggy,Buggy,True
+buggy_6.py,Buggy,Buggy,True
+buggy_7.py,Buggy,Buggy,True
+buggy_8.py,Buggy,Buggy,True
+buggy_9.py,Buggy,Buggy,True
+good_1.py,Not Buggy,Buggy,False
+good_10.py,Not Buggy,Buggy,False
+good_11.py,Not Buggy,Buggy,False
+good_12.py,Not Buggy,Buggy,False
+good_13.py,Not Buggy,Buggy,False
+good_14.py,Not Buggy,Buggy,False
+good_15.py,Not Buggy,Buggy,False
+good_16.py,Not Buggy,Buggy,False
+good_17.py,Not Buggy,Buggy,False
+good_18.py,Not Buggy,Buggy,False
+good_19.py,Not Buggy,Buggy,False
+good_2.py,Not Buggy,Buggy,False
+good_20.py,Not Buggy,Buggy,False
+good_3.py,Not Buggy,Buggy,False
+good_4.py,Not Buggy,Buggy,False
+good_5.py,Not Buggy,Buggy,False
+good_6.py,Not Buggy,Buggy,False
+good_7.py,Not Buggy,Buggy,False
+good_8.py,Not Buggy,Buggy,False
+good_9.py,Not Buggy,Buggy,False

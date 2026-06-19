@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Analysis Result</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Code Analysis Result</h1>
+
+    <p>
+        <strong>Uploaded File:</strong>
+        {{ filename }}
+    </p>
+
+    {% if result == "Buggy" %}
+        <h2 class="buggy">
+            ❌ Prediction: {{ result }}
+        </h2>
+    {% else %}
+        <h2 class="good">
+            ✅ Prediction: {{ result }}
+        </h2>
+    {% endif %}
+
+    <div class="dashboard-cards">
+
+        <div class="card">
+            <h3>Confidence</h3>
+            <p>{{ confidence }}%</p>
+        </div>
+
+        <div class="card">
+            <h3>Quality Score</h3>
+            <p>{{ quality_score }}/100</p>
+        </div>
+
+        <div class="card">
+            <h3>Severity</h3>
+            <p>{{ severity }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Complexity</h3>
+            <p>{{ complexity_level }}</p>
+        </div>
+
+    </div>
+
+    <div class="health-box">
+
+        {% if health_status == "Excellent" %}
+            <h3 class="health-good">
+                🟢 Code Health Status: {{ health_status }}
+            </h3>
+
+        {% elif health_status == "Moderate Risk" %}
+            <h3 class="health-medium">
+                🟡 Code Health Status: {{ health_status }}
+            </h3>
+
+        {% else %}
+            <h3 class="health-bad">
+                🔴 Code Health Status: {{ health_status }}
+            </h3>
+        {% endif %}
+
+    </div>
+
+    <div class="progress-container">
+
+        <div
+            class="progress-bar"
+            data-score="{{ quality_score }}"
+        >
+            {{ quality_score }}%
+        </div>
+
+    </div>
+
+    <div class="info-box">
+
+        <h3>Risk & Complexity</h3>
+
+        {% if severity == "High" %}
+            <p>
+                🔴 Bug Severity:
+                <span class="severity-high">
+                    {{ severity }}
+                </span>
+            </p>
+
+        {% elif severity == "Medium" %}
+            <p>
+                🟡 Bug Severity:
+                <span class="severity-medium">
+                    {{ severity }}
+                </span>
+            </p>
+
+        {% else %}
+            <p>
+                🟢 Bug Severity:
+                <span class="severity-low">
+                    {{ severity }}
+                </span>
+            </p>
+        {% endif %}
+
+        <p>
+            📊 Complexity Level:
+            <strong>{{ complexity_level }}</strong>
+        </p>
+
+    </div>
+
+    <div class="warning-box">
+
+        <h3>⚠ Explanation</h3>
+
+        <div class="explanation-item">
+            <h4>Detected Issue</h4>
+            <p>{{ bug_reason }}</p>
+        </div>
+
+        <div class="explanation-item">
+            <h4>Likely Impact</h4>
+            <p>{{ bug_impact }}</p>
+        </div>
+
+        <div class="explanation-item">
+            <h4>Exact Fix Steps</h4>
+
+            <p id="bug-fix-text">
+                {{ bug_fix }}
+            </p>
+
+            <button
+                type="button"
+                class="copy-button"
+                onclick="copyBugFix(this)"
+            >
+                Copy Suggested Fix
+            </button>
+        </div>
+
+    </div>
+
+    <div class="info-box">
+
+        <h3>💡 AI Suggestions</h3>
+
+        <ul id="suggestions-list">
+            {% for suggestion in suggestions %}
+                <li>{{ suggestion }}</li>
+            {% endfor %}
+        </ul>
+
+        <button
+            type="button"
+            class="copy-button"
+            onclick="copySuggestions(this)"
+        >
+            Copy All Suggestions
+        </button>
+
+    </div>
+
+    {% if corrected_code %}
+
+        <h3>🧑‍🏫 Learning Example</h3>
+
+        <div class="code-comparison">
+
+            <div class="code-panel buggy-code-panel">
+
+                <h4>❌ Original Buggy Code</h4>
+
+                <pre>{{ code }}</pre>
+
+            </div>
+
+            <div class="code-panel corrected-code-panel">
+
+                <h4>✅ Example Corrected Code</h4>
+
+                <pre id="corrected-code">{{ corrected_code }}</pre>
+
+                <button
+                    type="button"
+                    class="copy-button"
+                    onclick="copyCorrectedCode(this)"
+                >
+                    Copy Corrected Code
+                </button>
+
+            </div>
+
+        </div>
+
+    {% else %}
+
+        <h3>💻 Analyzed Source Code</h3>
+
+        <pre>{{ code }}</pre>
+
+        {% if result == "Buggy" %}
+
+            <div class="info-box">
+
+                <h3>ℹ Correction Information</h3>
+
+                <p>
+                    No automatic corrected example is available because
+                    this result was identified by the machine-learning model
+                    rather than a specific rule-based bug pattern.
+                </p>
+
+                <p>
+                    Review the conditions, loops, variables, return values,
+                    and expected output carefully.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    {% endif %}
+
+    <h3>📋 Extracted Features</h3>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for key, value in features.items() %}
+
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    <div class="report-download-box">
+
+        <h3>📥 Download Analysis Report</h3>
+
+        <p>
+            Save the prediction, explanation, suggestions,
+            extracted features, and analyzed code.
+        </p>
+
+        <button
+            type="button"
+            class="download-button"
+            onclick="downloadTextReport()"
+        >
+            Download TXT Report
+        </button>
+
+        <button
+            type="button"
+            class="download-button json-button"
+            onclick="downloadJsonReport()"
+        >
+            Download JSON Report
+        </button>
+
+    </div>
+
+    <div class="footer-link">
+        <a href="/">Analyze Another File</a>
+    </div>
+
+</div>
+
+<script>
+    const progressBar = document.querySelector(".progress-bar");
+
+    if (progressBar) {
+        const score = progressBar.getAttribute("data-score");
+        progressBar.style.width = score + "%";
+    }
+
+    const reportData = {
+        filename: {{ filename | tojson }},
+        prediction: {{ result | tojson }},
+        confidence: {{ confidence | tojson }},
+        quality_score: {{ quality_score | tojson }},
+        severity: {{ severity | tojson }},
+        health_status: {{ health_status | tojson }},
+        complexity_level: {{ complexity_level | tojson }},
+        detected_issue: {{ bug_reason | tojson }},
+        likely_impact: {{ bug_impact | tojson }},
+        suggested_fix: {{ bug_fix | tojson }},
+        suggestions: {{ suggestions | tojson }},
+        extracted_features: {{ features | tojson }},
+        analyzed_code: {{ code | tojson }},
+        corrected_code: {{ corrected_code | tojson }}
+    };
+
+    function copyText(text, button) {
+        navigator.clipboard.writeText(text)
+            .then(function () {
+                const originalText = button.textContent;
+
+                button.textContent = "Copied!";
+
+                setTimeout(function () {
+                    button.textContent = originalText;
+                }, 1500);
+            })
+            .catch(function () {
+                alert("Unable to copy the text.");
+            });
+    }
+
+    function copyBugFix(button) {
+        const element = document.getElementById("bug-fix-text");
+
+        if (!element) {
+            alert("No suggested fix is available.");
+            return;
+        }
+
+        copyText(element.innerText, button);
+    }
+
+    function copySuggestions(button) {
+        const items = document.querySelectorAll(
+            "#suggestions-list li"
+        );
+
+        const suggestionText = Array
+            .from(items)
+            .map(function (item) {
+                return "- " + item.innerText;
+            })
+            .join("\n");
+
+        copyText(suggestionText, button);
+    }
+
+    function copyCorrectedCode(button) {
+        const correctedCodeElement =
+            document.getElementById("corrected-code");
+
+        if (!correctedCodeElement) {
+            alert("No corrected code is available.");
+            return;
+        }
+
+        copyText(
+            correctedCodeElement.innerText,
+            button
+        );
+    }
+
+    function createSafeFilename(filename) {
+        return filename
+            .replace(/\.py$/i, "")
+            .replace(/[^a-zA-Z0-9_-]/g, "_");
+    }
+
+    function downloadFile(content, filename, fileType) {
+        const blob = new Blob(
+            [content],
+            { type: fileType }
+        );
+
+        const url = URL.createObjectURL(blob);
+
+        const downloadLink = document.createElement("a");
+
+        downloadLink.href = url;
+        downloadLink.download = filename;
+
+        document.body.appendChild(downloadLink);
+
+        downloadLink.click();
+
+        document.body.removeChild(downloadLink);
+
+        URL.revokeObjectURL(url);
+    }
+
+    function downloadTextReport() {
+        const suggestionText = reportData.suggestions
+            .map(function (suggestion) {
+                return "- " + suggestion;
+            })
+            .join("\n");
+
+        const featureText = Object.entries(
+            reportData.extracted_features
+        )
+            .map(function (entry) {
+                return entry[0] + ": " + entry[1];
+            })
+            .join("\n");
+
+        let report = "";
+
+        report += "STUDENT PYTHON BUG DETECTOR REPORT\n";
+        report += "==================================\n\n";
+
+        report += "File: " + reportData.filename + "\n";
+        report += "Prediction: " + reportData.prediction + "\n";
+        report += "Confidence: " + reportData.confidence + "%\n";
+
+        report += "Quality Score: ";
+        report += reportData.quality_score + "/100\n";
+
+        report += "Severity: " + reportData.severity + "\n";
+
+        report += "Health Status: ";
+        report += reportData.health_status + "\n";
+
+        report += "Complexity: ";
+        report += reportData.complexity_level + "\n\n";
+
+        report += "DETECTED ISSUE\n";
+        report += "--------------\n";
+        report += reportData.detected_issue + "\n\n";
+
+        report += "LIKELY IMPACT\n";
+        report += "-------------\n";
+        report += reportData.likely_impact + "\n\n";
+
+        report += "SUGGESTED FIX\n";
+        report += "-------------\n";
+        report += reportData.suggested_fix + "\n\n";
+
+        report += "AI SUGGESTIONS\n";
+        report += "--------------\n";
+        report += suggestionText + "\n\n";
+
+        report += "EXTRACTED FEATURES\n";
+        report += "------------------\n";
+        report += featureText + "\n\n";
+
+        report += "ANALYZED SOURCE CODE\n";
+        report += "--------------------\n";
+        report += reportData.analyzed_code + "\n";
+
+        if (reportData.corrected_code) {
+            report += "\nEXAMPLE CORRECTED CODE\n";
+            report += "----------------------\n";
+            report += reportData.corrected_code + "\n";
+        }
+
+        const safeName = createSafeFilename(
+            reportData.filename
+        );
+
+        downloadFile(
+            report,
+            safeName + "_analysis_report.txt",
+            "text/plain;charset=utf-8"
+        );
+    }
+
+    function downloadJsonReport() {
+        const jsonReport = JSON.stringify(
+            reportData,
+            null,
+            4
+        );
+
+        const safeName = createSafeFilename(
+            reportData.filename
+        );
+
+        downloadFile(
+            jsonReport,
+            safeName + "_analysis_report.json",
+            "application/json;charset=utf-8"
+        );
+    }
+</script>
+
+</body>
+
+</html>

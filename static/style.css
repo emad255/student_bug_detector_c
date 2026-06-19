@@ -1,0 +1,383 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 70%;
+    margin: auto;
+    box-shadow: 0px 0px 12px rgba(0,0,0,0.2);
+}
+
+h1 {
+    color: #333;
+}
+
+.buggy {
+    color: red;
+}
+
+.good {
+    color: green;
+}
+
+.confidence {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.score {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #444;
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 10px;
+    margin-top: 10px;
+    height: 22px;
+}
+
+.progress-bar {
+    height: 22px;
+    border-radius: 10px;
+    background-color: #2f6fed;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.info-box {
+    background-color: #f0f6ff;
+    border-left: 5px solid #2f6fed;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.warning-box {
+    background-color: #fff3cd;
+    border-left: 5px solid #ff9800;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.severity-high {
+    color: red;
+    font-weight: bold;
+}
+
+.severity-medium {
+    color: orange;
+    font-weight: bold;
+}
+
+.severity-low {
+    color: green;
+    font-weight: bold;
+}
+
+.flow {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.flow div {
+    background: #eef3ff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.flow span {
+    font-size: 24px;
+    color: #555;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+pre {
+    background-color: #1e1e1e;
+    color: #f8f8f2;
+    padding: 18px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-top: 15px;
+    white-space: pre-wrap;
+}
+
+.footer-link {
+    margin-top: 25px;
+}
+
+a {
+    text-decoration: none;
+    color: #2f6fed;
+    font-weight: bold;
+}
+.home-container {
+    background: white;
+    padding: 40px;
+    border-radius: 14px;
+    width: 70%;
+    margin: auto;
+    margin-top: 60px;
+    text-align: center;
+    box-shadow: 0px 0px 14px rgba(0,0,0,0.2);
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.features div {
+    background-color: #eef3ff;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.upload-card {
+    background-color: #f8f9ff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #d6ddff;
+}
+
+input[type="file"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: white;
+}
+
+button {
+    background-color: #2f6fed;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1f55c9;
+}
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: #eef3ff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.card p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2f6fed;
+}
+.health-box {
+    margin-top: 20px;
+    padding: 18px;
+    border-radius: 10px;
+    background-color: #f8f9ff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.health-good {
+    color: green;
+}
+
+.health-medium {
+    color: orange;
+}
+
+.health-bad {
+    color: red;
+}
+
+textarea {
+
+    width: 90%;
+
+    padding: 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-family: Consolas, monospace;
+
+    font-size: 14px;
+
+    resize: vertical;
+}
+.explanation-item {
+    background-color: white;
+    padding: 14px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: 1px solid #ead79b;
+}
+
+.explanation-item h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.copy-button {
+    background-color: #2f6fed;
+    color: white;
+    border: none;
+    padding: 9px 16px;
+    margin-top: 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.copy-button:hover {
+    background-color: #1f55c9;
+}
+
+.code-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 15px;
+}
+
+.code-panel {
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.buggy-code-panel {
+    background-color: #fff2f2;
+    border: 1px solid #efb4b4;
+}
+
+.corrected-code-panel {
+    background-color: #effbf2;
+    border: 1px solid #a9d9b2;
+}
+
+.code-panel h4 {
+    margin-top: 0;
+}
+
+.code-panel pre {
+    min-height: 180px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+@media (max-width: 900px) {
+    .code-comparison {
+        grid-template-columns: 1fr;
+    }
+}
+.report-download-box {
+    background-color: #f8f9ff;
+    border: 1px solid #d6ddff;
+    border-left: 5px solid #2f6fed;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 10px;
+}
+
+.report-download-box h3 {
+    margin-top: 0;
+}
+
+.download-button {
+    background-color: #2f6fed;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.download-button:hover {
+    background-color: #1f55c9;
+}
+
+.json-button {
+    background-color: #444;
+}
+
+.json-button:hover {
+    background-color: #222;
+}
+
+.error-message {
+    background-color: #fff2f2;
+    border: 1px solid #efb4b4;
+    border-left: 5px solid #d9534f;
+    color: #a33;
+    padding: 14px;
+    margin: 15px auto;
+    border-radius: 8px;
+    width: 70%;
+    font-weight: bold;
+}

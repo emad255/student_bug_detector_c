@@ -1,0 +1,55 @@
+22 May 2026
+- Set up Flask project
+- Created virtual environment
+- Installed required Python libraries
+- Created project folder structure
+- Created dataset and sample folders
+- Added initial good and buggy Python files
+- Built AST feature extractor
+
+23 May 2026
+- Generated dataset.csv
+- Extracted code features using AST
+- Trained Random Forest machine learning model
+- Tested model predictions
+- Saved trained ML model using joblib
+
+24 May 2026
+- Built Flask upload system
+- Connected ML model with Flask
+- Added file upload functionality
+- Created prediction route
+- Built initial result page
+- Displayed prediction results on website
+
+25 May 2026
+- Added confidence score system
+- Added code quality score system
+- Added bug explanation system
+- Added AI-style suggestions
+- Added severity level analysis
+- Added complexity analysis
+
+26 May 2026
+- Added uploaded source code viewer
+- Added workflow visualization section
+- Improved bug detection logic
+- Added hybrid ML + rule-based detection
+- Reduced false buggy predictions
+- Improved overall prediction stability
+
+27 May 2026
+- Improved homepage UI design
+- Added external CSS styling
+- Improved result dashboard design
+- Added progress bar visualization
+- Added professional frontend layout
+- Improved user interaction and usability
+
+28 May 2026
+- Uploaded project to GitHub
+- Organized project structure
+- Updated requirements.txt
+- Updated progress tracking file
+- Tested good and buggy sample files
+- Finalized intelligent code analysis workflow

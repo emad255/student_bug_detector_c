@@ -1,0 +1,41 @@
+filename,actual,predicted,confidence,correct,loops,functions,ifs,imports,try_blocks,lines,syntax_error
+buggy_1.py,Buggy,Buggy,99.0,True,0,0,0,0,0,1,0
+buggy_10.py,Buggy,Buggy,55.86,True,0,1,1,0,0,9,0
+buggy_11.py,Buggy,Not Buggy,55.92,False,0,0,0,1,0,7,0
+buggy_12.py,Buggy,Buggy,85.0,True,1,0,0,0,0,2,0
+buggy_13.py,Buggy,Buggy,66.92,True,0,1,0,0,0,8,0
+buggy_14.py,Buggy,Buggy,91.0,True,0,0,0,0,0,5,0
+buggy_15.py,Buggy,Buggy,91.0,True,0,0,0,0,0,5,0
+buggy_16.py,Buggy,Buggy,88.0,True,0,0,0,0,0,4,0
+buggy_17.py,Buggy,Not Buggy,60.25,False,1,1,0,0,0,8,0
+buggy_18.py,Buggy,Buggy,88.0,True,0,0,0,0,0,4,0
+buggy_19.py,Buggy,Not Buggy,60.25,False,1,1,0,0,0,8,0
+buggy_2.py,Buggy,Buggy,100.0,True,0,0,0,0,0,2,1
+buggy_20.py,Buggy,Buggy,98.0,True,0,0,0,0,0,3,0
+buggy_3.py,Buggy,Buggy,99.0,True,0,0,0,0,0,2,0
+buggy_4.py,Buggy,Buggy,99.0,True,0,0,0,0,0,2,0
+buggy_5.py,Buggy,Buggy,76.75,True,0,1,0,0,0,4,0
+buggy_6.py,Buggy,Buggy,98.0,True,0,0,0,0,0,3,0
+buggy_7.py,Buggy,Not Buggy,64.0,False,1,0,0,0,0,4,0
+buggy_8.py,Buggy,Buggy,52.48,True,0,1,0,0,0,6,0
+buggy_9.py,Buggy,Buggy,78.0,True,1,0,0,0,0,6,0
+good_1.py,Not Buggy,Buggy,76.75,False,0,1,0,0,0,4,0
+good_10.py,Not Buggy,Buggy,55.86,False,0,1,1,0,0,9,0
+good_11.py,Not Buggy,Buggy,76.58,False,0,0,0,0,1,6,0
+good_12.py,Not Buggy,Not Buggy,55.92,True,0,0,0,1,0,7,0
+good_13.py,Not Buggy,Not Buggy,87.0,True,1,1,0,0,0,11,0
+good_14.py,Not Buggy,Not Buggy,86.67,True,0,0,0,0,0,7,0
+good_15.py,Not Buggy,Not Buggy,86.67,True,0,0,0,0,0,7,0
+good_16.py,Not Buggy,Buggy,52.48,False,0,1,0,0,0,6,0
+good_17.py,Not Buggy,Buggy,50.42,False,0,2,0,0,0,11,0
+good_18.py,Not Buggy,Buggy,52.11,False,0,1,2,0,0,10,0
+good_19.py,Not Buggy,Not Buggy,85.0,True,1,0,0,0,0,9,0
+good_2.py,Not Buggy,Not Buggy,64.0,True,1,0,0,0,0,4,0
+good_20.py,Not Buggy,Buggy,60.9,False,0,1,1,0,0,8,0
+good_3.py,Not Buggy,Not Buggy,76.75,True,1,1,0,0,0,9,0
+good_4.py,Not Buggy,Buggy,75.25,False,0,0,1,0,0,6,0
+good_5.py,Not Buggy,Not Buggy,67.25,True,0,1,0,0,0,5,0
+good_6.py,Not Buggy,Buggy,52.48,False,0,1,0,0,0,6,0
+good_7.py,Not Buggy,Not Buggy,64.0,True,1,0,0,0,0,4,0
+good_8.py,Not Buggy,Buggy,55.86,False,0,1,1,0,0,9,0
+good_9.py,Not Buggy,Not Buggy,88.0,True,1,0,0,0,0,10,0

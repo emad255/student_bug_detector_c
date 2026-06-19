@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Python Bug Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="home-container">
+
+    <h1>Good Code & Buggy Code Analyzer</h1>
+
+    {% if error %}
+    <div class="error-message">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <p class="subtitle">
+        Upload a Python file or paste Python code to classify good or buggy code,
+        analyze code quality, and receive intelligent suggestions.
+    </p>
+
+    <div class="features">
+        <div>✅ Good Code Detection</div>
+        <div>❌ Buggy Code Detection</div>
+        <div>📊 Code Quality Analysis</div>
+        <div>💡 AI Suggestions</div>
+    </div>
+
+    <div class="upload-card">
+
+        <h2>Analyze Python Code</h2>
+
+        <form action="/predict" method="POST" enctype="multipart/form-data">
+
+            <label><strong>Option 1: Upload Python File</strong></label>
+
+            <br><br>
+
+            <input type="file" name="file" accept=".py">
+
+            <br><br>
+
+            <label><strong>Option 2: Paste Python Code</strong></label>
+
+            <br><br>
+
+            <textarea
+                name="code_input"
+                rows="12"
+                placeholder="Paste your Python code here..."
+            ></textarea>
+
+            <br><br>
+
+            <button type="submit">Analyze Code</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
