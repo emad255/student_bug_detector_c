@@ -335,14 +335,18 @@ def predict():
                 "spelling mistake in the variable name."
             )
 
-            # Illustrative example showing the fix pattern (defining the variable)
+            definition_lines = ""
+            for var in undefined_vars:
+                definition_lines += (
+                    var + " = None   # TODO: define '" + var + "' with a suitable value\n"
+                )
+
             corrected_code = (
-                "# Define the variable before using it.\n"
-                "# Example pattern:\n"
-                "discount = 20\n"
-                "price = 100\n"
-                "final = price - discount\n"
-                "print(final)"
+                "# Define the missing variable(s) before use:\n"
+                + definition_lines
+                + "\n"
+                + "# Your original code:\n"
+                + code.strip()
             )
 
     ml_result = "Buggy" if prediction == 1 else "Not Buggy"
