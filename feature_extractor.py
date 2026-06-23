@@ -1,5 +1,7 @@
 import ast
 import builtins as builtins_module
+
+
 def find_undefined_variables(code):
     try:
         tree = ast.parse(code)
@@ -49,6 +51,7 @@ def find_undefined_variables(code):
 
     return undefined
 
+
 def extract_features(code):
 
     try:
@@ -63,7 +66,10 @@ def extract_features(code):
             "imports": 0,
             "try_blocks": 0,
             "lines": len(code.splitlines()),
-            "syntax_error": 1
+            "syntax_error": 1,
+            "undefined_vars": 0,
+            "risky_ops": 0,
+            "has_bare_except": 0
         }
 
     num_loops = sum(
@@ -91,6 +97,23 @@ def extract_features(code):
         for node in ast.walk(tree)
     )
 
+    num_undefined = len(find_undefined_variables(code))
+
+
+    num_risky = 0
+    for node in ast.walk(tree):
+        if isinstance(node, ast.BinOp) and isinstance(node.op, (ast.Div, ast.FloorDiv, ast.Mod)):
+            num_risky += 1
+        if isinstance(node, ast.Subscript):
+            num_risky += 1
+
+
+    has_bare_except = 0
+    for node in ast.walk(tree):
+        if isinstance(node, ast.ExceptHandler) and node.type is None:
+            has_bare_except = 1
+            break
+
     return {
         "loops": num_loops,
         "functions": num_functions,
@@ -98,5 +121,8 @@ def extract_features(code):
         "imports": num_imports,
         "try_blocks": num_try,
         "lines": len(code.splitlines()),
-        "syntax_error": syntax_error
+        "syntax_error": syntax_error,
+        "undefined_vars": num_undefined,
+        "risky_ops": num_risky,
+        "has_bare_except": has_bare_except
     }

@@ -335,7 +335,15 @@ def predict():
                 "spelling mistake in the variable name."
             )
 
-            corrected_code = ""
+            # Illustrative example showing the fix pattern (defining the variable)
+            corrected_code = (
+                "# Define the variable before using it.\n"
+                "# Example pattern:\n"
+                "discount = 20\n"
+                "price = 100\n"
+                "final = price - discount\n"
+                "print(final)"
+            )
 
     ml_result = "Buggy" if prediction == 1 else "Not Buggy"
 

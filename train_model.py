@@ -20,7 +20,10 @@ X = df[
         "imports",
         "try_blocks",
         "lines",
-        "syntax_error"
+        "syntax_error",
+        "undefined_vars",
+        "risky_ops",
+        "has_bare_except"
     ]
 ]
 
